@@ -10,7 +10,7 @@ class PerfectNumberController extends Controller
     public function find(PerfectNumberRequest $request)
     {
         $perfectNumbers = collect([]);
-        for ($i = $request->range['start']; $i <= $request->range['end']; $i++)
+        for ($i = (int)$request->range['start']; $i <= (int)$request->range['end']; $i++)
         {
             if($this->isPerfect($i))
             {
@@ -19,7 +19,7 @@ class PerfectNumberController extends Controller
         }
 
         return response()->json([
-            'data' => $perfectNumbers->all(),
+            'data' => ['perfectNumbers' => $perfectNumbers],
             'message' => 'OK',
             'code' => '200'
         ]);

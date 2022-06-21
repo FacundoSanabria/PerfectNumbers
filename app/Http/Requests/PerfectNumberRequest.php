@@ -63,7 +63,8 @@ class PerfectNumberRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'errors' => $validator->errors(),
-            'status' => true
+            'message' => 'error',
+            'code' => '422'
         ], 422));
     }
 }
