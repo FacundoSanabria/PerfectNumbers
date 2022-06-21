@@ -5,6 +5,9 @@ services:
       context: ./
     volumes:
       - .:/var/www/html
+      - /var/www/html/vendor/
+      - /var/www/html/storage/
+      - /var/www/html/bootstrap/cache/
     ports:
       - "80:80"
     environment:
