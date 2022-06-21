@@ -2,18 +2,15 @@
  
 namespace App\Http\Controllers;
  
-use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PerfectNumberRequest; 
 
 class PerfectNumberController extends Controller
 {
-    public function find(Request $request)
+    public function find(PerfectNumberRequest $request)
     {
-        $start = $request->range[0];
-        $end = $request->range[1];
-
         $perfectNumbers = collect([]);
-        for ($i = $start; $i < $end; $i++){
+        for ($i = $request->range['start']; $i < $request->range['end']; $i++){
             if($this->isPerfect($i)){
                 $perfectNumbers->push($i);
             }

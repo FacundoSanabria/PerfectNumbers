@@ -15,4 +15,4 @@ use App\Http\Controllers\PerfectNumberController;
 |
 */
 
-Route::post('/perfect_numbers/', [PerfectNumberController::class, 'find']);
+Route::get('/perfect_numbers/', [PerfectNumberController::class, 'find']);
