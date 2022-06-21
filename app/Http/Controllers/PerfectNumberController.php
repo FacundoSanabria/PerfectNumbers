@@ -10,8 +10,10 @@ class PerfectNumberController extends Controller
     public function find(PerfectNumberRequest $request)
     {
         $perfectNumbers = collect([]);
-        for ($i = $request->range['start']; $i < $request->range['end']; $i++){
-            if($this->isPerfect($i)){
+        for ($i = $request->range['start']; $i <= $request->range['end']; $i++)
+        {
+            if($this->isPerfect($i))
+            {
                 $perfectNumbers->push($i);
             }
         }
@@ -23,25 +25,27 @@ class PerfectNumberController extends Controller
         ]);
     }
 
-    //calcula si $number es perfecto
+    //calculates if the number is perfect
     private function isPerfect($number)
     {
         $sum = 1;
-    
-        //Calcular la suma de los divisores
+        //Calculates the sum of it divisors
         for ($i = 2; $i * $i <= $number; $i++)
         {
             if ($number % $i == 0)
             {
-                if($i * $i != $number)
+                if($i * $i != $number){
                     $sum = $sum + $i + (int)($number / $i);
-                else
+                }           
+                else{
                     $sum = $sum + $i;
+                }    
             }
         }
 
-        // Si la suma de todos los divisores es igual al numero, el numero es perfecto
-        if ($sum == $number && $number != 1){
+        // If the sum of all its divisors is equal to the number, the number is perfect
+        if ($sum == $number && $number != 1)
+        {
             return true;
         }
            
